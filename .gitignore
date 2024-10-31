@@ -32,4 +32,8 @@ build/
 ### VS Code ###
 .vscode/
 
-/.gitignore
+/.*gitignore
+/.*idea
+/.*mvn
+/*HELP.md
+/*mvnw.cmd
