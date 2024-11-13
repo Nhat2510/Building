@@ -1,39 +1,33 @@
 package com.tuannhat.Identify_service.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.FieldDefaults;
 
+import java.util.ArrayList;
+import java.util.List;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
+@Table(name="district")
 public class District {
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private long id;
-    private String code;
-    private String name;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
 
-    public long getId() {
-        return id;
-    }
+    @Column(name = "code")
+    String code;
 
-    public void setId(long id) {
-        this.id = id;
-    }
+    @Column(name="name")
+    String name;
 
-    public String getName() {
-        return name;
-    }
+    @OneToMany(mappedBy = "district",fetch = FetchType.LAZY)
+    List<Building> items=new ArrayList<>();
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
 }

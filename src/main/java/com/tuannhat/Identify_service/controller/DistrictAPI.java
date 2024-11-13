@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/district")
-public class District {
+public class DistrictAPI {
     @Autowired
     private DistrictService districtService;
 

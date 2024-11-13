@@ -1,65 +1,53 @@
 package com.tuannhat.Identify_service.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
+@Builder
 @Entity
+@Table(name = "building")
 public class Building {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-    private String name;
-    private String street;
-    private String ward;
-    private long districtid;
-    private int rentprice;
+    Long id;
 
-    public int getRentprice() {
-        return rentprice;
-    }
+    @Column(name = "name")
+    String name;
 
-    public void setRentprice(int rentprice) {
-        this.rentprice = rentprice;
-    }
+    @Column(name = "street")
+    String street;
 
-    public long getDistrictid() {
-        return districtid;
-    }
+    @Column(name = "ward")
+    String ward;
 
-    public void setDistrictid(long districtid) {
-        this.districtid = districtid;
-    }
+    @Column(name = "districtid")
+    Long districtid;
 
-    public long getId() {
-        return id;
-    }
+    @Column(name = "rentprice")
+    Long rentprice;
 
-    public void setId(long id) {
-        this.id = id;
-    }
-    public String getName() {
-        return name;
-    }
+    @Column(name = "numberofbasement")
+    Long numberofbasement;
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    @Column(name = "floorarea")
+    Long floorarea;
 
-    public String getStreet() {
-        return street;
-    }
+    @Column(name = "managername")
+    String managername;
 
-    public void setStreet(String street) {
-        this.street = street;
-    }
+    @Column(name = "managerphonenumber")
+    String managerphonenumber;
 
-    public String getWard() {
-        return ward;
-    }
+    @Column(name = "servicefee")
+    String servicefee;
 
-    public void setWard(String ward) {
-        this.ward = ward;
-    }
+    @ManyToOne
+    @JoinColumn(name = "districtid")
+    District district;
+
 }
